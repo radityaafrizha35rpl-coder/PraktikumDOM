@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum 1</title>
+</head>
+<body>
+    <h1 id="judul">Aku belum berubah</h1>
+    <button id="btnUbah">Ubah teks</button>
+    <button id="btnWarna">Ubah warna</button>
+    <button id="btnUkuran">50px</button>
+    <button id="btnReset">Reset</button>
+
+        <script>
+            const judul = document.getElementById('judul'); 
+            const btnUbah = document.getElementById('btnUbah'); 
+            const btnWarna = document.getElementById('btnWarna');
+            
+            btnUbah.addEventListener('click', () => {
+                judul.textContent = 'Aku sudah berubah';
+            })
+
+            btnWarna.addEventListener('click', () => {
+                judul.style.color = 'red';
+            })
+            btnWarna.addEventListener('click', () => {
+                judul.style.color = 'red';
+            })
+
+            btnUkuran.addEventListener('click', () => {
+                judul.style.fontSize = '50px';
+            })
+
+            btnReset.addEventListener('click', () => {
+                judul.textContent = 'Aku belum berubah';
+                judul.removeAttribute('style');
+            })
+        </script>
+</body>
+</html>

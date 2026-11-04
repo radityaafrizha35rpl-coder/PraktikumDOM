@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar belanja</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 40px auto; }
+        li { margin: 8px 0; }
+        li button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Daftar Belanja</h2>
+    <input type="text" id="barang" placeholder="Nama barang">
+    <button id="btnTambah">Tambah</button>
+    <p>Jumlah barang: <span id="jumlah">0</span></p>
+    <ul id="daftar"></ul>
+
+    <script>
+        const barang = document.getElementById('barang');
+        const btnTambah = document.getElementById('btnTambah');
+        const daftar = document.getElementById('daftar');
+        const jumlahElement = document.getElementById('jumlah');
+        let jumlahBarang = 0;
+
+        btnTambah.addEventListener('click', () => {
+            if (barang.value.trim() === '') {
+                alert('Isi nama barang dulu ya!');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.textContent = barang.value;
+
+            const btnHapus = document.createElement('button');
+            btnHapus.textContent = 'Hapus';
+            btnHapus.addEventListener('click', () => {
+                li.remove();
+                jumlahBarang = jumlahBarang - 1;
+                jumlahElement.textContent = jumlahBarang;
+            });
+
+            li.appendChild(btnHapus);
+            daftar.appendChild(li);
+
+            jumlahBarang = jumlahBarang + 1;
+            jumlahElement.textContent = jumlahBarang;
+            barang.value = '';
+            barang.focus();
+        });
+
+        barang.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                btnTambah.click();
+            }
+        });
+    </script>
+</body>
+</html>
